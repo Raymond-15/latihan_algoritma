@@ -16,28 +16,65 @@
     <?php if ( isset($_POST['submit']) ) : ?>
         <h1><?php 
 
-            $asc = $_POST['angka'];
-            $dsc = $asc;
+            $angka = $_POST['angka'];
 
-            $hasil_asc = explode(",", $asc);
-            sort($hasil_asc);
+            $hasil = explode(",", $angka);
+            rsort($hasil);
 
-            foreach ($hasil_asc as $data) {
+            // mengurutkan secara desc
+            
+            foreach ($hasil as $data) {
                 echo $data . " ";
             }
+            echo "<- Angka secara descending";
+            
+            echo "<br>";
+
+            $hasil = explode(",", $angka);
+            sort($hasil);
+
+            // mengurutkan secara asc
+            
+            foreach ($hasil as $data) {
+                echo $data . " ";
+            }
+            echo "<- Angka secara ascending";
 
             echo "<br>";
 
-            $hasil_dsc = explode(",", $dsc);
-            rsort($hasil_dsc);
-
-            foreach ($hasil_dsc as $data) {
-                echo $data . " ";
+            // mencari sisa bagi dari nilai asc
+            
+            foreach ($hasil as $data) {
+                $sisa = $data % 2;
+                echo $sisa . " ";
             }
+            echo "<- Sisa Bagi asc";
+
+            echo "<br>";
+
+            // mencari bilangan prima
+            
+            foreach ($hasil as $data) {
+                $counter = 0; 
+                for($j=1;$j<=$data;$j++){ 
+                  
+                    if($data % $j==0){ 
+                        
+                        $counter++;
+                    }
+                }
+                if($counter==2){
+                 
+                    echo $data . " ";
+                }else{
+                    echo " ";
+                }
+            }
+            echo "<- Bilangan Prima";
             
         ?></h1>
 
-        <?php endif; ?>
+    <?php endif; ?>
     
 </body>
 </html>

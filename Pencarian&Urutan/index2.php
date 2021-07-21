@@ -7,7 +7,7 @@
 
     <form action="" method="post">
         masukkan angka : 
-        <input type="text" name="angka" placeholder="contoh : 1,2,3,4,5,6">
+        <input type="text" name="angka">
         <br>
         <button type="submit" name="submit">TAMPILKAN</button>
     </form>
@@ -18,7 +18,7 @@
 
             $angka = $_POST['angka'];
 
-            $hasil = explode(",", $angka);
+            $hasil = str_split($angka);
             rsort($hasil);
 
             // mengurutkan secara desc
@@ -30,7 +30,6 @@
             
             echo "<br>";
 
-            $hasil = explode(",", $angka);
             sort($hasil);
 
             // mengurutkan secara asc

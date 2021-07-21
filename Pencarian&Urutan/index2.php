@@ -7,7 +7,7 @@
 
     <form action="" method="post">
         masukkan angka : 
-        <input type="text" name="angka">
+        <input type="text" name="angka" placeholder="contoh : 1,2,3,4,5,6">
         <br>
         <button type="submit" name="submit">TAMPILKAN</button>
     </form>

@@ -66,29 +66,14 @@ $data = [
 ];
 
 
-if (isset($_POST['submit'])) {
-    foreach ($data as $ta) {
-        $test_array[] = $ta['nama'];
-    }
-}else{
-    foreach ($data as $ta) {
-        $test_array[] = $ta['nama'];
-    }
+
+foreach ($data as $ta) {
+    $test_array[] = $ta['nama'];
 }
-
-// elseif ($_GET['data'] == 'nama') {
-
-// } elseif ($_GET['data'] == 'status') {
-//     $message = "Maaf fitur belum tersedia";
-//     echo "<script type='text/javascript'>alert('$message');</script>";
-// }
 
 
 $hasil = merge_sort($test_array);
 
-// foreach ($hasil as $h) {
-//     echo $h . "<br>";
-// }
 ?>
 
 <!DOCTYPE html>

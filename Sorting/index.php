@@ -28,7 +28,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="binaryCase1.php">Case 1</a></li>
-                                <li><a class="dropdown-item" href="#">Case 2</a></li>
+                                <li><a class="dropdown-item" href="binaryCase2.php">Case 2</a></li>
                                 <li><a class="dropdown-item" href="#">Case 3</a></li>
                             </ul>
                         </li>

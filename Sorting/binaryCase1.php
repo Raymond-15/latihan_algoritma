@@ -28,32 +28,32 @@ function binarySearch($arr, $l, $r, $x)
 
 $data = [
     [
-        'nim' => 217,
+        'nim' => 1810530217,
         'nama' => 'Raymond Putra',
         'status' => 'LUNAS'
     ],
     [
-        'nim' => 218,
+        'nim' => 1810530218,
         'nama' => 'Ahmad Zulkifli',
         'status' => 'LUNAS'
     ],
     [
-        'nim' => 219,
+        'nim' => 1810530219,
         'nama' => 'Joko Walio',
         'status' => 'BELUM LUNAS'
     ],
     [
-        'nim' => 223,
+        'nim' => 1810530220,
         'nama' => 'Rio Dwi',
         'status' => "BELUM LUNAS"
     ],
     [
-        'nim' => 240,
+        'nim' => 1810530221,
         'nama' => 'Ishak Smith',
         'status' => 'BELUM LUNAS'
     ],
     [
-        'nim' => 253,
+        'nim' => 1810530222,
         'nama' => 'Sherin Mulia',
         'status' => 'LUNAS'
     ]
@@ -67,6 +67,22 @@ $arr = $hasil;
 
 $n = count($arr);
 
+$tampil = "";
+
+if (isset($_POST['submit'])) {
+    $x = $_POST['nim'];
+    $result = binarySearch($arr, 0, $n - 1, $x);
+    if (($result == -1)) {
+        $tampil =  "data tidak ada";
+    } else {
+        if ($data[$result]['status'] == "LUNAS") {
+            $tampil =  "Mahasiswa dengan NIM " . $arr[$result] . " telah " . $data[$result]['status'] . " membayar SPP";
+        } else {
+            $tampil =  "Mahasiswa dengan NIM " . $arr[$result] . " " . $data[$result]['status'] . " membayar SPP";
+        }
+    }
+}
+
 
 ?>
 
@@ -77,7 +93,7 @@ $n = count($arr);
     <!-- Bootstrap CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Binary</title>
+    <title>Binary Case 1</title>
 </head>
 
 <body>
@@ -94,8 +110,15 @@ $n = count($arr);
             </form>
         </div>
 
+        <?php if ($tampil != "") : ?>
+            <div class="col-lg-6 alert alert-info alert-dismissible fade show" role="alert">
+                <?= $tampil; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
 
-        <table class="table">
+
+        <table class="table col-lg-6">
             <th>
                 <tr>
                     <th>NIM</th>
@@ -104,24 +127,15 @@ $n = count($arr);
                 </tr>
             </th>
             <tbody>
-                <?php if (isset($_POST['submit'])) {
-                    $x = $_POST['nim'];
-                    $result = binarySearch($arr, 0, $n - 1, $x);
-                    if (($result == -1)) {
-                        echo "data tidak ada";
-                    } else {
-                        if ($data[$result]['status'] == "LUNAS") {
-                            echo "Mahasiswa dengan NIM " . $arr[$result] . " telah " . $data[$result]['status'] . " membayar SPP";
-                        } else {
-                            echo "Mahasiswa dengan NIM " . $arr[$result] . " " . $data[$result]['status'] . " membayar SPP";
-                        }
-                    }
-                }
-                foreach ($data as $d) : ?>
+                <?php foreach ($data as $d) : ?>
                     <tr>
                         <td><?= $d['nim']; ?></td>
                         <td><?= $d['nama']; ?></td>
-                        <td><?= $d['status']; ?></td>
+                        <?php if ($d['status'] == "LUNAS") { ?>
+                            <td class="badge bg-success rounded-pill d-flex justify-content-center mt-2"><?= $d['status']; ?></td>
+                        <?php } else { ?>
+                            <td class="badge bg-danger rounded-pill d-flex justify-content-center mt-2"><?= $d['status']; ?></td>
+                        <?php } ?>
                     </tr>
                 <?php endforeach;
                 ?>

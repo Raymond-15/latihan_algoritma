@@ -42,6 +42,9 @@ if (isset($_POST['submit'])) {
     $pattern = $_POST['pattern'];
     $txt = $text;
     $pat = $pattern;
+    $hasil_txt = str_split($txt);
+    print_r($hasil_txt);
+    echo "<br>";
     search($pat, $txt);
 }
 

@@ -2,17 +2,40 @@
 // PHP program for Naive Pattern
 // Searching algorithm
 
+// function search($pat, $txt)
+// {
+//     $M = strlen($pat);
+//     $N = strlen($txt);
+
+//     // A loop to slide pat[]
+//     // one by one
+//     for ($i = 0; $i <= $N - $M; $i++) {
+
+//         // For current index i,
+//         // check for pattern match
+//         for ($j = 0; $j < $M; $j++)
+//             if ($txt[$i + $j] != $pat[$j])
+//                 break;
+
+//         // if pat[0...M-1] =
+//         // txt[i, i+1, ...i+M-1]
+//         if ($j == $M) {
+//             echo "Pattern found at index " . $i . "<br>";
+//         }
+//     }
+// }
+
 function search($pat, $txt)
 {
     $M = strlen($pat);
     $N = strlen($txt);
+    $i = 0;
 
-    // A loop to slide pat[]
-    // one by one
-    for ($i = 0; $i <= $N - $M; $i++) {
+    while ($i <= $N - $M) {
+        $j = 0;
 
-        // For current index i,
-        // check for pattern match
+        /* For current index i,
+           check for pattern match */
         for ($j = 0; $j < $M; $j++)
             if ($txt[$i + $j] != $pat[$j])
                 break;
@@ -20,8 +43,14 @@ function search($pat, $txt)
         // if pat[0...M-1] =
         // txt[i, i+1, ...i+M-1]
         if ($j == $M) {
-            echo "Pattern found at index " . $i . "<br>";
-        }
+            echo ("Pattern found at index $i" . "\n");
+            $i = $i + $M;
+        } else if ($j == 0)
+            $i = $i + 1;
+        else
+
+            // slide the pattern by j
+            $i = $i + $j;
     }
 }
 

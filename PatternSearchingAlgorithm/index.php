@@ -68,32 +68,7 @@ function search($pat, $txt, $q)
 // A prime number
 $q = 101;
 
-// Function Call
-if (isset($_POST['submit'])) {
-    if ($_POST['teks'] == null) {
-        echo '<script type="text/javascript">
-            alert("kolom Teks tidak boleh kosong!");
-        </script>';
-    } elseif ($_POST['pattern'] == null) {
-        echo '<script type="text/javascript">
-            alert("kolom Pattern tidak boleh kosong!");
-        </script>';
-    } else {
-        if (isset($_POST['matchWholeWord'])) {
-            $txt = strtolower($_POST['teks']);
-            $pat = strtolower($_POST['pattern']);
-            search($pat, $txt, $q);
-        } elseif (isset($_POST['matchCase'])) {
-            $txt = $_POST['teks'];
-            $pat = $_POST['pattern'];
-            search($pat, $txt, $q);
-        } else {
-            echo '<script type="text/javascript">
-            alert("Radio button belum dipilih!");
-        </script>';
-        }
-    }
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -137,6 +112,38 @@ if (isset($_POST['submit'])) {
 
                 </form>
 
+            </div>
+        </div>
+
+        <div class="row-lg">
+            <div class="col-lg">
+                <?php
+                if (isset($_POST['submit'])) {
+                    if ($_POST['teks'] == null) {
+                        echo '<script type="text/javascript">
+                        alert("kolom Teks tidak boleh kosong!");
+                        </script>';
+                    } elseif ($_POST['pattern'] == null) {
+                        echo '<script type="text/javascript">
+                        alert("kolom Pattern tidak boleh kosong!");
+                        </script>';
+                    } else {
+                        if (isset($_POST['matchWholeWord'])) {
+                            $txt = strtolower($_POST['teks']);
+                            $pat = strtolower($_POST['pattern']);
+                            search($pat, $txt, $q);
+                        } elseif (isset($_POST['matchCase'])) {
+                            $txt = $_POST['teks'];
+                            $pat = $_POST['pattern'];
+                            search($pat, $txt, $q);
+                        } else {
+                            echo '<script type="text/javascript">
+                            alert("Radio button belum dipilih!");
+                            </script>';
+                        }
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>

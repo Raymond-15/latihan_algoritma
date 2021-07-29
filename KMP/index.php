@@ -17,7 +17,7 @@ function KMPSearch($pat, $txt)
         }
 
         if ($j == $M) {
-            $hasil = ($i - $j);
+            $hasil[] =  ($i - $j);
             $j = $lps[$j - 1];
         }
 
@@ -32,7 +32,7 @@ function KMPSearch($pat, $txt)
         }
     }
 
-    echo $hasil;
+    echo implode(" ", $hasil) . "<br>";
 }
 
 // Fills lps[] for given patttern pat[0..M-1]
@@ -69,14 +69,61 @@ function computeLPSArray($pat, $M, &$lps)
     }
 }
 
-$hasil = "";
+$data = [
+    [
+        'nim' => 1810530217,
+        'nama' => 'Raymond Putra',
+        'status' => 'LUNAS'
+    ],
+    [
+        'nim' => 1810530218,
+        'nama' => 'Ahmad Zulkifli',
+        'status' => 'LUNAS'
+    ],
+    [
+        'nim' => 1810530219,
+        'nama' => 'Joko Walio',
+        'status' => 'BELUM LUNAS'
+    ],
+    [
+        'nim' => 1810530220,
+        'nama' => 'Rio Dwi',
+        'status' => "BELUM LUNAS"
+    ],
+    [
+        'nim' => 1810530221,
+        'nama' => 'Ishak Smith',
+        'status' => 'BELUM LUNAS'
+    ],
+    [
+        'nim' => 1810530222,
+        'nama' => 'Sherin Mulia',
+        'status' => 'LUNAS'
+    ]
+];
 
-$data = [""];
 
 
-$txt = "ABABDABACDABABCABAB";
-$pat = "ABABCABAB";
-KMPSearch($pat, $txt);
+// if (isset($_POST['submit'])) {
+//     foreach ($data as $d) {
+
+//         $arr[] = $d['nama'];
+//     }
+
+
+//     $txt = implode($arr);
+//     $pat = $_POST['teks'];
+//     KMPSearch($pat, $txt);
+// }
+
+
+
+
+// print_r($arr);
+
+// echo $tes;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -90,14 +137,59 @@ KMPSearch($pat, $txt);
 
 <body>
     <div class="container mt-4">
+        <div class="row-lg">
+            <!-- <h1 class="">Kamusmu</h1>
+            <h5>Terjemahan Bahasa Indosesia ke Bahasa Sasak</h5> -->
+        </div>
         <div class="row">
             <div class="col-lg-6">
-
+                <form action="" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="teks" placeholder="masukkan kata..">
+                        <button class="btn btn-outline-secondary" name="submit" type="submit" id="button-addon2">Cari</button>
+                    </div>
+                </form>
 
             </div>
         </div>
-        <div class="row">
-            <p><?= $hasil; ?></p>
+
+        <div class="row-lg">
+            <?php
+            if (isset($_POST['submit'])) {
+                foreach ($data as $d) {
+
+                    $arr[] = $d['nama'];
+                }
+
+
+                $txt = implode($arr);
+                $pat = $_POST['teks'];
+                KMPSearch($pat, $txt);
+            }
+            ?>
+        </div>
+
+        <div class="row-lg">
+            <div class="col-lg-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($data as $d) : ?>
+                            <tr>
+                                <td><?= $d['nim']; ?></td>
+                                <td><?= $d['nama']; ?></td>
+                                <td><?= $d['status']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

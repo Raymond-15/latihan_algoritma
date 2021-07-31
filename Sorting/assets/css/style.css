@@ -1,4 +1,81 @@
-.link {
-  text-decoration: none;
-  color: black;
+input[type="text"] {
+  width: 7%;
+  padding: 5px 5px;
+  margin: 10px 1px;
+  box-sizing: border-box;
+  font-size: 20px;
+  text-align: center;
+}
+
+input[type="text"]:focus {
+  border: 2px solid #555;
+}
+
+button {
+  background-color: #abbbff;
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+select {
+  width: 20%;
+  padding: 16px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  margin: 4px 5px;
+}
+
+.array {
+  width: 5%;
+  background-color: #f1f1f1;
+  border: 1px solid black;
+  padding: 1px;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+
+  border-radius: 12px;
+}
+
+#label {
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px;
+  color: #abbbff;
+}
+
+#title {
+  font-family: "Raleway", sans-serif;
+  font-size: 25px;
+  text-align: center;
+  padding: 20px;
+  color: #abbbff;
+}
+
+#sort {
+  font-family: "Raleway", sans-serif;
+  font-size: 23px;
+  text-align: center;
+  padding: 10px;
+  color: #abbbff;
+}
+
+#link {
+  font-family: "Raleway", sans-serif;
+  font-size: 10px;
+  text-align: center;
+  padding: 5px;
+}
+
+body {
+  text-align: center;
 }

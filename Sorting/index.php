@@ -47,7 +47,7 @@
                                 Quicksort
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Case 1</a></li>
+                                <li><a class="dropdown-item" href="quickCase1.php">Case 1</a></li>
                                 <li><a class="dropdown-item" href="#">Case 2</a></li>
                                 <li><a class="dropdown-item" href="#">Case 3</a></li>
                             </ul>

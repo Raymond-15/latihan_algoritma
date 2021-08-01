@@ -64,15 +64,10 @@ $data = [
         'status' => 'LUNAS'
     ]
 ];
+$arr = ["Raymond Putra", "Ahmad Zulkifli", "Joko Walio", "Rio Dwi", "Ishak Smith", "Sherin Mulia"];
+// print_r($test_array);
 
-
-
-foreach ($data as $ta) {
-    $test_array[] = $ta['nama'];
-}
-
-
-$hasil = merge_sort($test_array);
+$hasil = merge_sort($arr);
 
 ?>
 
@@ -100,27 +95,41 @@ $hasil = merge_sort($test_array);
 
         <div class="col-4">
             <table class="table">
-                <th>
+                <thead>
                     <tr>
-                        <th>Nama</th>
+                        <th scope="col">NIM</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Status</th>
                     </tr>
-                </th>
+                </thead>
+                <tbody>
+                    <?php foreach ($data as $d) : ?>
+                        <tr>
+                            <th><?= $d['nim']; ?></th>
+                            <td><?= $d['nama']; ?></td>
+                            <td><?= $d['status']; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nama</th>
+                    </tr>
+                </thead>
                 <tbody>
                     <?php
-                    if (isset($_POST['submit'])) {
-                        for ($i = 0; $i < count($hasil); $i++) : ?>
+                    if (isset($_POST['urut'])) {
+                    ?>
+                        <?php foreach ($hasil as $h) : ?>
                             <tr>
-                                <td><?= $hasil[$i]; ?></td>
-                            </tr>
-                        <?php endfor;
-                    } else {
-                        foreach ($data as $d) : ?>
-                            <tr>
-                                <td><?= $d['nama']; ?></td>
+                                <td><?= $h; ?></td>
                             </tr>
                     <?php endforeach;
-                    }
-                    ?>
+                    } ?>
                 </tbody>
             </table>
         </div>

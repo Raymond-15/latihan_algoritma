@@ -95,17 +95,13 @@ $q = 101;
                         <input type="text" name="pattern" class="form-control" id="pattern">
                     </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="matchCase" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Match Case
-                        </label>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline1" name="customRadioInline1" value="matchWholeWord" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline1">Match Whole Word</label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="matchWholeWord" id="flexRadioDefault2">
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            Match Whole Word
-                        </label>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline2" name="customRadioInline1" value="matchCase" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline2">Match Case</label>
                     </div>
                     <br>
                     <button type="submit" name="submit" class="btn btn-primary">CEK</button>
@@ -118,6 +114,7 @@ $q = 101;
         <div class="row-lg">
             <div class="col-lg">
                 <?php
+                $_POST['customRadioInline1'] = '';
                 if (isset($_POST['submit'])) {
                     if ($_POST['teks'] == null) {
                         echo '<script type="text/javascript">
@@ -128,11 +125,11 @@ $q = 101;
                         alert("kolom Pattern tidak boleh kosong!");
                         </script>';
                     } else {
-                        if (isset($_POST['matchWholeWord'])) {
+                        if ($_POST['customRadioInline1'] == 'matchWholeWord') {
                             $txt = strtolower($_POST['teks']);
                             $pat = strtolower($_POST['pattern']);
                             search($pat, $txt, $q);
-                        } elseif (isset($_POST['matchCase'])) {
+                        } elseif ($_POST['customRadioInline1'] == 'matchCase') {
                             $txt = $_POST['teks'];
                             $pat = $_POST['pattern'];
                             search($pat, $txt, $q);
@@ -143,6 +140,7 @@ $q = 101;
                         }
                     }
                 }
+
                 ?>
             </div>
         </div>

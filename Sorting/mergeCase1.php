@@ -64,7 +64,10 @@ $data = [
         'status' => 'LUNAS'
     ]
 ];
-$arr = ["Raymond Putra", "Ahmad Zulkifli", "Joko Walio", "Rio Dwi", "Ishak Smith", "Sherin Mulia"];
+foreach ($data as $a) {
+    $arr[] = $a['nama'];
+}
+// $arr = ["Raymond Putra", "Ahmad Zulkifli", "Joko Walio", "Rio Dwi", "Ishak Smith", "Sherin Mulia"];
 // print_r($test_array);
 
 $hasil = merge_sort($arr);

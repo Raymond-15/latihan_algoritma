@@ -1,38 +1,46 @@
 <?php
 function KMPSearch($pat, $txt)
 {
-    $M = strlen($pat);
-    $N = strlen($txt);
+    if ($pat == "") {
+        echo "masukkan kata!";
+    } else {
+        $hasil[] = "";
+        $M = strlen($pat);
+        $N = strlen($txt);
 
-    $lps = array_fill(0, $M, 0);
+        $lps = array_fill(0, $M, 0);
 
-    computeLPSArray($pat, $M, $lps);
+        computeLPSArray($pat, $M, $lps);
 
-    $i = 0; // index for txt[]
-    $j = 0; // index for pat[]
-    while ($i < $N) {
-        if ($pat[$j] == $txt[$i]) {
-            $j++;
-            $i++;
-        }
+        $i = 0; // index for txt[]
+        $j = 0; // index for pat[]
+        while ($i < $N) {
+            if ($pat[$j] == $txt[$i]) {
+                $j++;
+                $i++;
+            }
 
-        if ($j == $M) {
-            $hasil[] =  ($i - $j);
-            $j = $lps[$j - 1];
-        }
-
-        // mismatch after j matches
-        else if ($i < $N && $pat[$j] != $txt[$i]) {
-            // Do not match lps[0..lps[j-1]] characters,
-            // they will match anyway
-            if ($j != 0)
+            if ($j == $M) {
+                $hasil[] =  ($i - $j);
                 $j = $lps[$j - 1];
-            else
-                $i = $i + 1;
+            }
+
+            // mismatch after j matches
+            else if ($i < $N && $pat[$j] != $txt[$i]) {
+                // Do not match lps[0..lps[j-1]] characters,
+                // they will match anyway
+                if ($j != 0)
+                    $j = $lps[$j - 1];
+                else
+                    $i = $i + 1;
+            }
+        }
+        if ($hasil != "") {
+            echo "Data ada yang anda cari ada!";
+        } else {
+            echo "Data tidak ada!";
         }
     }
-
-    echo implode(" ", $hasil) . "<br>";
 }
 
 // Fills lps[] for given patttern pat[0..M-1]
@@ -68,6 +76,8 @@ function computeLPSArray($pat, $M, &$lps)
         }
     }
 }
+
+// $hasil[] = "";
 
 $data = [
     [

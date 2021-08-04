@@ -51,7 +51,7 @@ function is_pangram($sentence)
                 if (isset($_POST['cek'])) {
                     $tests[] = $_POST['input'];
                     $hasil = implode(" ", $tests);
-                    echo "Banyak huruf " . count(str_split($hasil)) . "<br>";
+                    echo "Banyak element " . count(str_split($hasil)) . "<br>";
 
                     foreach ($tests as $txt) {
                         echo '"', $txt, '"', "<br>";

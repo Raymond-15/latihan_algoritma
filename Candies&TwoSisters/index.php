@@ -8,7 +8,7 @@ include 'function.php';
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
-    <title>Hit The Lottery</title>
+    <title>Candies & Two Sisters</title>
 </head>
 
 <body>
